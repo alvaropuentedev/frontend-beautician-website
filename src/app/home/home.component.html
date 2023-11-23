@@ -53,8 +53,9 @@
       </div>
     </div>
   </header>
+  <!-- TODO White Navbar -->
   <div class="navbar bg-base-100">
-    <div class="">
+    <div class="navbar-start">
       <div class="dropdown">
         <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
           <svg
@@ -69,25 +70,33 @@
               stroke-width="2"
               d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
-          <ul
-            tabindex="0"
-            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a>Item 1</a></li>
-            <li>
-              <a>Parent</a>
-              <ul class="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </li>
-            <li><a>Item 3</a></li>
-          </ul>
         </label>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a>Servicios</a></li>
+          <li>
+            <a>Parent</a>
+            <ul class="p-2">
+              <li><a>Submenu 1</a></li>
+              <li><a>Submenu 2</a></li>
+            </ul>
+          </li>
+          <li><a>Item 3</a></li>
+        </ul>
       </div>
+      <a class="cursor-pointer"
+        ><img
+          class="rounded-full"
+          src="../../assets/img/1_20231119_144503_0000.png"
+          width="60"
+          height="60"
+          alt="icon"
+      /></a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a>Item 1</a></li>
+        <li><a (click)="first()">Servicios</a></li>
         <li tabindex="0">
           <details>
             <summary>Parent</summary>
@@ -100,17 +109,24 @@
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a class="text-xl font-bold from-accent-content">Diana Garcia</a>
     <div class="navbar-end">
       <a class="btn">Button</a>
     </div>
   </div>
-  F
   <!--* MAIN -->
-  <main class="row-span-2"></main>
+  <main class="row-span-2 items-center">
+    <div class="bg-rose-200 h-72 w-full"></div>
+    <div class="bg-rose-200 h-72 w-full"></div>
+    <div class="bg-rose-200 h-72 w-full"></div>
+    <div id="services" class="bg-base-100 h-72 w-full">
+      <img class="rounded-full" src="../../assets/img/IMG_20220602_123833.png" width="200px" height="80" alt="" />
+      <h1>Servicios Premo</h1>
+    </div>
+    <div class="bg-rose-200 h-72 w-full"></div>
+  </main>
   <!--* FOOTER -->
   <footer
-    class="flex flex-col sm:flex-row md:grid-cols-10 footer p-12 bg-base-200 text-base-content sm:justify-evenly">
+    class="flex flex-col sm:flex-row md:grid-cols-10 footer p-12 bg-base-100 text-base-content sm:justify-evenly">
     <!-- Services -->
     <nav>
       <header class="footer-title">Services</header>
