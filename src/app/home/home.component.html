@@ -1,5 +1,5 @@
 <div class="">
-  <header class="bg-custom-pastel-pink grid md:grid-cols-12 h-12 text-sm">
+  <header class="bg-custom-pastel-pink grid md:grid-cols-12 h-12 text-sm top-0">
     <div class="col-start-4 col-end-10 grid grid-flow-col items-center">
       <div #phoneSchedule class="flex gap-10">
         <div class="flex gap-1">
@@ -54,7 +54,7 @@
     </div>
   </header>
   <!-- TODO White Navbar -->
-  <div class="navbar bg-base-100">
+  <div id="white-navbar" (window:scroll)="makeNavBarFixedOnTop()" class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
         <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
@@ -71,10 +71,11 @@
               d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
         </label>
+        <!-- ? Hamburguer Menu -->
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>Servicios</a></li>
+          <li><a (click)="servicesAutoScroll()">Servicios</a></li>
           <li>
             <a>Parent</a>
             <ul class="p-2">
@@ -96,7 +97,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a (click)="first()">Servicios</a></li>
+        <li><a (click)="servicesAutoScroll()">Servicios</a></li>
         <li tabindex="0">
           <details>
             <summary>Parent</summary>
@@ -115,11 +116,22 @@
   </div>
   <!--* MAIN -->
   <main class="row-span-2 items-center">
-    <div class="bg-rose-200 h-72 w-full"></div>
+    <div class="bg-rose-200 h-72 w-full flex justify-center">
+      <img
+        src="../../assets/img/slide-img-3.png"
+        width="500"
+        height="500"
+        alt="" />
+    </div>
     <div class="bg-rose-200 h-72 w-full"></div>
     <div class="bg-rose-200 h-72 w-full"></div>
     <div id="services" class="bg-base-100 h-72 w-full">
-      <img class="rounded-full" src="../../assets/img/IMG_20220602_123833.png" width="200px" height="80" alt="" />
+      <img
+        class="rounded-full"
+        src="../../assets/img/IMG_20220602_123833.png"
+        width="200px"
+        height="80"
+        alt="" />
       <h1>Servicios Premo</h1>
     </div>
     <div class="bg-rose-200 h-72 w-full"></div>
