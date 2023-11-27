@@ -19,7 +19,8 @@ export class AuthService {
   public isLogin$ = this.isLoginSubject.asObservable();
 
   constructor() {
-    this.baseUrl = 'http://localhost:8080/auth';
+    // this.baseUrl = 'http://localhost:8080/auth';
+    this.baseUrl = 'https://backend-beautician-website-production.up.railway.app/auth';
   }
 
   get currentUser(): string | undefined {
