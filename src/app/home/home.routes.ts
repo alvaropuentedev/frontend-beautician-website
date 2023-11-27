@@ -1,6 +1,10 @@
-import { Route } from "@angular/router";
-import { HomePageComponent } from "./page/home-page.component";
+import { Route } from '@angular/router';
+import { HomePageComponent } from './page/home-page.component';
 
 export const HOME_ROUTES: Route[] = [
-  {path: '', component: HomePageComponent}
+  {
+    path: '',
+    loadComponent: () =>
+      import('./page/home-page.component').then(m => m.HomePageComponent),
+  }
 ];
