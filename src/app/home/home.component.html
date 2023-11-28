@@ -75,7 +75,7 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a class="services" (click)="servicesAutoScroll()">Servicios</a></li>
+          <li><button id="scrollToServices" (click)="handleAutoScrollAndFocus('scrollToServices', 'mainServices')">Servicios</button></li>
           <li>
             <a>Parent</a>
             <ul class="p-2">
@@ -83,7 +83,7 @@
               <li><a>Submenu 2</a></li>
             </ul>
           </li>
-          <li><a (click)="contactAutoScroll()">Contacto</a></li>
+          <li><button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">Contacto</button></li>
         </ul>
       </div>
       <a class="cursor-pointer"
@@ -97,7 +97,7 @@
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><button (click)="servicesAutoScroll()">Servicios</button></li>
+        <li><button id="scrollToServices" (click)="handleAutoScrollAndFocus('scrollToServices', 'mainServices')">Servicios</button></li>
         <li tabindex="0">
           <details>
             <summary>Parent</summary>
@@ -107,7 +107,7 @@
             </ul>
           </details>
         </li>
-        <li><button (click)="contactAutoScroll()">Contacto</button></li>
+        <li><button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">Contacto</button></li>
       </ul>
     </div>
     <div class="navbar-end">
@@ -129,7 +129,7 @@
     </div>
     <div class="bg-rose-200 h-72 w-full"></div>
     <div class="bg-rose-200 h-72 w-full"></div>
-    <div id="services" class="bg-base-100 h-72 w-full">
+    <div id="mainServices" class="bg-base-100 h-72 w-full">
       <img
         class="rounded-full"
         src="../../assets/img/hands1.png"
@@ -177,7 +177,7 @@
       </p>
     </nav>
     <!-- Contact -->
-    <nav id="Contact">
+    <nav id="targetContact">
       <header class="footer-title">Contacto</header>
       <strong>Tlf:</strong>
       <p>644038254</p>

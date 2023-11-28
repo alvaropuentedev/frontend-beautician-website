@@ -13,30 +13,29 @@ export class HomeComponent {
   private readonly elementRef = inject(ElementRef);
   private readonly renderer = inject(Renderer2);
 
-  constructor() { }
+  constructor() {}
 
-  servicesAutoScroll() {
-    const servicesElementFocus: HTMLElement | null = this.elementRef.nativeElement;
-    this.renderer.setProperty(servicesElementFocus, 'blur', true);
-      const servicesElement = this.elementRef.nativeElement.querySelector('#services');
-      servicesElement.scrollIntoView({
+  // * Func handle scroll to target and remove focus
+  handleAutoScrollAndFocus(elementId: string, scrollTarget: string) {
+    const elementFocus: HTMLElement | null = this.elementRef.nativeElement.querySelector(`#${elementId}`);
+    if (elementFocus) {
+      elementFocus.blur();
+    }
+    const targetElement = this.elementRef.nativeElement.querySelector(`#${scrollTarget}`);
+    if (targetElement) {
+      targetElement.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
-        inline: 'nearest'
+        inline: 'nearest',
       });
-  }
-  contactAutoScroll() {
-      const servicesElement = this.elementRef.nativeElement.querySelector('#Contact');
-      servicesElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'nearest'
-      });
+    }
   }
 
+  // * white navbar auto top 0 position on scroll
   @HostListener('window:scroll', ['$event'])
   makeNavBarFixedOnTop() {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const scrollPosition =
+      window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const navElement = this.elementRef.nativeElement.querySelector('#white-navbar');
 
     if (scrollPosition >= 50) {
@@ -50,6 +49,4 @@ export class HomeComponent {
       navElement.style.setProperty('position', 'relative');
     }
   }
-
-
 }
