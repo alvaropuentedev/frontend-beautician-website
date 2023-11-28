@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,24 +9,29 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent  implements OnInit {
-  private elementRef = inject(ElementRef);
+export class HomeComponent {
+  private readonly elementRef = inject(ElementRef);
+  private readonly renderer = inject(Renderer2);
 
-  constructor() {
-
-  }
-  ngOnInit(): void {
-  }
+  constructor() { }
 
   servicesAutoScroll() {
-    try {
+    const servicesElementFocus: HTMLElement | null = this.elementRef.nativeElement;
+    this.renderer.setProperty(servicesElementFocus, 'blur', true);
       const servicesElement = this.elementRef.nativeElement.querySelector('#services');
       servicesElement.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
         inline: 'nearest'
       });
-    } catch (err) {}
+  }
+  contactAutoScroll() {
+      const servicesElement = this.elementRef.nativeElement.querySelector('#Contact');
+      servicesElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest'
+      });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -35,7 +40,6 @@ export class HomeComponent  implements OnInit {
     const navElement = this.elementRef.nativeElement.querySelector('#white-navbar');
 
     if (scrollPosition >= 50) {
-      // Cambia la posición del elemento cuando el desplazamiento es mayor o igual a 20px
       // Make navbar fixed on top when scroll > 50px
       navElement.style.setProperty('top', '0');
       navElement.style.setProperty('position', 'fixed');
