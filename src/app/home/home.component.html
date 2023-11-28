@@ -11,17 +11,11 @@
           <p>Lunes-Viernes: 9h a 14h</p>
         </div>
       </div>
-      <div
-        #socilIcons
-        class="sm:grid grid-flow-col hidden gap-4 place-content-end">
+      <div #socilIcons class="sm:grid grid-flow-col hidden gap-4 place-content-end">
         <div class="sm:hover:text-[color:white] cursor-pointer">
           <!-- Whatsapp -->
           <a aria-label="Chat on WhatsApp" href="https://wa.me/+34644038254">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="currentColor"
-              viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891
                  3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893
@@ -34,11 +28,7 @@
         <div class="hover:text-[color:white] cursor-pointer">
           <!-- Instagram -->
           <a href="https://www.instagram.com/diana.garcia.estetica/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="currentColor"
-              viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069
                 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204
@@ -54,7 +44,7 @@
     </div>
   </header>
   <!-- TODO White Navbar -->
-  <div id="white-navbar" (window:scroll)="makeNavBarFixedOnTop()" class="navbar bg-base-100">
+  <div id="whiteNavbar" class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
         <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
@@ -75,67 +65,71 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          <li><button id="scrollToServices" (click)="handleAutoScrollAndFocus('scrollToServices', 'mainServices')">Servicios</button></li>
           <li>
-            <a>Parent</a>
-            <ul class="p-2">
-              <li><a>aaaa</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
+            <button id="scrollToHome" (click)="handleAutoScrollAndFocus('scrollToHome', 'targetHome')">
+              Home
+            </button>
           </li>
-          <li><button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">Contacto</button></li>
+          <li>
+            <button
+              id="scrollToServices"
+              (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')">
+              Servicios
+            </button>
+          </li>
+          <li>
+            <button
+              id="scrollToContact"
+              (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">
+              Contacto
+            </button>
+          </li>
         </ul>
       </div>
       <a class="cursor-pointer"
-        ><img
-          class="rounded-full"
-          src="../../assets/img/mainLogo.png"
-          width="60"
-          height="60"
-          alt="icon"
+        ><img class="rounded-full" src="../../assets/img/mainLogo.png" width="60" height="60" alt="icon"
       /></a>
     </div>
+    <!-- ? Normal menu bar -->
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><button id="scrollToServices" (click)="handleAutoScrollAndFocus('scrollToServices', 'mainServices')">Servicios</button></li>
-        <li tabindex="0">
-          <details>
-            <summary>Parent</summary>
-            <ul class="p-2">
-              <li><a>hola</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </details>
+        <li>
+          <button id="scrollToHome" (click)="handleAutoScrollAndFocus('scrollToServices', 'targetHome')">
+            Home
+          </button>
         </li>
-        <li><button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">Contacto</button></li>
+        <li>
+          <button
+            id="scrollToServices"
+            (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')">
+            Servicios
+          </button>
+        </li>
+        <li>
+          <button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">
+            Contacto
+          </button>
+        </li>
       </ul>
     </div>
-    <div class="navbar-end">
-    </div>
+    <div class="navbar-end"></div>
   </div>
   <!--* MAIN -->
   <main class="row-span-2 items-center">
-    <div class="bg-[#fcfcfc] h-fit w-full flex justify-evenly">
-      <h2 class="font-semibold font-sans translate-x-52 translate-y-44 text-[35px]">
+    <!-- width="600"
+    height="700" -->
+    <div id="targetHome" class="bg-[#fcfcfc] h-fit w-full flex justify-evenly">
+      <strong class="font-semibold font-sans sm:translate-x-52 sm:translate-y-44 sm:text-[35px]">
         Deja Tus Uñas
-        <br>
+        <br />
         en Buenas Manos
-      </h2>
-      <img
-        src="../../assets/img/colorsss.png"
-        width="600"
-        height="700"
-        alt="" />
+      </strong>
+      <img src="../../assets/img/colorsss.png" alt="" class="h-60 w-56" />
     </div>
     <div class="bg-rose-200 h-72 w-full"></div>
     <div class="bg-rose-200 h-72 w-full"></div>
-    <div id="mainServices" class="bg-base-100 h-72 w-full">
-      <img
-        class="rounded-full"
-        src="../../assets/img/hands1.png"
-        width="200px"
-        height="80"
-        alt="" />
+    <div id="targetServices" class="bg-base-100 h-72 w-full">
+      <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
       <h1>Servicios Premo</h1>
     </div>
     <div class="bg-rose-200 h-72 w-full"></div>
@@ -164,10 +158,7 @@
             stroke-width="1.5"
             stroke="currentColor"
             class="w-6 h-6">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
