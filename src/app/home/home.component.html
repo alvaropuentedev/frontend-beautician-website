@@ -44,7 +44,7 @@
     </div>
   </header>
   <!-- TODO White Navbar -->
-  <div id="whiteNavbar" class="navbar bg-base-100">
+  <div id="whiteNavbar" class="navbar bg-base-100 border-b-[1px]">
     <div class="navbar-start">
       <div class="dropdown">
         <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
@@ -87,7 +87,12 @@
         </ul>
       </div>
       <a class="cursor-pointer"
-        ><img class="rounded-full" src="../../assets/img/mainLogo.png" width="60" height="60" alt="icon"
+      ><img
+      class="sm:inline sm:rounded-full hidden"
+      src="../../assets/img/mainLogo.png"
+      width="50"
+      height="50"
+      alt="icon"
       /></a>
     </div>
     <!-- ? Normal menu bar -->
@@ -112,19 +117,22 @@
         </li>
       </ul>
     </div>
+    <h1 id="title" class="sm:hidden text-3xl underline font-bold w-full justify-center">Diana Garcia</h1>
     <div class="navbar-end"></div>
   </div>
   <!--* MAIN -->
   <main class="row-span-2 items-center">
     <!-- width="600"
-    height="700" -->
-    <div id="targetHome" class="bg-[#fcfcfc] h-fit w-full flex justify-evenly">
-      <strong class="font-semibold font-sans sm:translate-x-52 sm:translate-y-44 sm:text-[35px]">
+      height="700" -->
+      <div id="targetHome" class="bg-[#fcfcfc] h-fit w-full flex justify-evenly">
+        <strong
+        id="textoSlogan"
+        class="font-semibold font-sans sm:translate-x-52 sm:translate-y-44 sm:text-[35px]">
         Deja Tus Uñas
         <br />
         en Buenas Manos
       </strong>
-      <img src="../../assets/img/colorsss.png" alt="" class="h-60 w-56" />
+      <img src="../../assets/img/colorsss.png" alt="" class="h-60 w-56 p-3" />
     </div>
     <div class="bg-rose-200 h-72 w-full"></div>
     <div class="bg-rose-200 h-72 w-full"></div>

@@ -1,6 +1,18 @@
 
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../../assets/fonts/BeautyWind.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
 #whiteNavbar {
   position: sticky;
   top: 0;
   z-index: 10;
+  height: fit-content;
+}
+
+#title {
+  font-family: 'Open Sans', sans-serif;
 }
