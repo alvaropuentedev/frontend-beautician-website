@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'BeautyWind Sans';
+  src: url('../assets/fonts/BeautyWind.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'KaushanScript Sans';
+  src: url('../assets/fonts/KaushanScript-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}

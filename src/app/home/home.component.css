@@ -1,15 +1,5 @@
-
-@font-face {
-  font-family: 'BeautyWind Sans';
-  src: url('../../assets/fonts/BeautyWind.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: 'KaushanScript Sans';
-  src: url('../../assets/fonts/KaushanScript-Regular.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
+#title {
+  font-family: 'BeautyWind Sans', sans-serif;
 }
 
 #whiteNavbar {
@@ -19,9 +9,6 @@
   height: fit-content;
 }
 
-#title {
-  font-family: 'BeautyWind Sans', sans-serif;
-}
 #textoSloganOne, #textoSloganTwo {
   font-family: 'KaushanScript Sans';
 }
