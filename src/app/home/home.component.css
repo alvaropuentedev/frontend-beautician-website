@@ -1,7 +1,13 @@
 
 @font-face {
-  font-family: 'Open Sans';
+  font-family: 'BeautyWind Sans';
   src: url('../../assets/fonts/BeautyWind.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'KaushanScript Sans';
+  src: url('../../assets/fonts/KaushanScript-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
@@ -14,5 +20,44 @@
 }
 
 #title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'BeautyWind Sans', sans-serif;
+}
+#textoSloganOne, #textoSloganTwo {
+  font-family: 'KaushanScript Sans';
+}
+
+/* * MAIN one text */
+@keyframes appearAndSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#textoSloganOne, #textoSloganTwo {
+  animation: appearAndSlide 5s ease-out;
+}
+
+#textoSloganOne {
+  translate: -6rem 1rem;
+}
+
+#textoSloganTwo {
+  translate: -3.2rem 2.4rem;
+}
+
+@media screen and (min-width: 768px) {
+  #textoSloganOne {
+    translate: -10rem 1rem;
+    font-size: x-large;
+  }
+
+  #textoSloganTwo {
+    translate: -5rem 3rem;
+    font-size: x-large;
+  }
 }
