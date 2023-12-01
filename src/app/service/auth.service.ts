@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../auth/interfaces/authResponse.interface';
 import { LoginRequest } from '../auth/interfaces/loginRequest.interface';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
   private http = inject(HttpClient);
   private cookieService = inject(CookieService);
+  private jwtHelper = inject(JwtHelperService);
 
   private baseUrl: string;
 
@@ -46,5 +48,12 @@ export class AuthService {
     this.user = undefined;
     this.isLoginSubject.next(false);
     this.cookieService.deleteAll();
+  }
+
+  public isAuthenticated(): boolean {
+    const token = this.cookieService.get('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
   }
 }
