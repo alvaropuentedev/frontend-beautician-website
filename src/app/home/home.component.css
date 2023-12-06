@@ -38,13 +38,16 @@
 }
 
 @media screen and (min-width: 768px) {
+  .divTextHeader {
+    translate: 17rem 5rem;
+    width: 300px;
+    font-size: xx-large;
+  }
   #textoSloganOne {
     translate: -10rem 1rem;
-    font-size: x-large;
   }
 
   #textoSloganTwo {
     translate: -5rem 3rem;
-    font-size: x-large;
   }
 }

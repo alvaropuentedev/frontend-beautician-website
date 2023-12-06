@@ -3,7 +3,7 @@ import { AuthService } from '../../service/auth.service';
 import { Observable } from 'rxjs';
 import { inject } from '@angular/core';
 
-export const AuthGuard: CanActivateFn = (
+export const authGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
