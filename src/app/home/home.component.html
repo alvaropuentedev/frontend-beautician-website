@@ -59,19 +59,19 @@
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <button id="scrollToHome" (click)="handleAutoScrollAndFocus('scrollToHome', 'targetHome')">
+          <button id="scrollToHome" (click)="handleAutoScrollAndFocus('scrollToHome', 'targetHome')" class="text-[18px]">
             Home
           </button>
         </li>
         <li>
           <button
             id="scrollToServices"
-            (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')">
+            (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')" class="text-[18px]">
             Servicios
           </button>
         </li>
         <li>
-          <button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')">
+          <button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')" class="text-[18px]">
             Contacto
           </button>
         </li>
@@ -124,7 +124,7 @@
 <main class="row-span-2 items-center">
   <!-- width="600"
       height="700" -->
-  <div id="targetHome" class="bg-[#fcfcfc] h-full w-full">
+  <div id="targetHome" class="bg-[#f4f4f4] h-full w-full">
     <div class="flex w-full justify-center">
       <div class="divTextHeader">
         <span id="textoSloganOne" class="absolute"> Deja Tus Uñas </span>
@@ -132,15 +132,23 @@
       </div>
       <div
         class="sm:w-[500px] sm:h-[450px] h-60 w-56 translate-x-[3.2rem]
-         translate-y-[2rem] lg:translate-x-[7rem] lg:translate-y-[2rem]">
+         translate-y-[2rem] lg:translate-x-[4rem] lg:translate-y-[2rem]">
         <img src="../../assets/img/colorsss.png" alt="" class="" />
       </div>
     </div>
   </div>
-  <div class="bg-rose-200 h-72 w-full"></div>
-  <div class="bg-rose-200 h-72 w-full"></div>
+  <div class="bg-base-100 h-72 w-full"></div>
+  <!--? SERVICES -->
   <div id="targetServices" class="h-fit w-full bg-[#f4f4f4] grid grid-cols-2">
-    <div class="text-center">
+    <div class="flex flex-col items-center">
+      <div class="">
+        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
+      </div>
+      <div>
+        <p>Servicios Premo</p>
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
       <div>
         <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
       </div>
@@ -148,7 +156,7 @@
         <p>Servicios Premo</p>
       </div>
     </div>
-    <div class="row g-0 box-icon-classic-bordered justify-content-center">
+    <div class="flex flex-col items-center">
       <div>
         <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
       </div>
@@ -156,15 +164,7 @@
         <p>Servicios Premo</p>
       </div>
     </div>
-    <div class="row g-0 box-icon-classic-bordered justify-content-center">
-      <div>
-        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
-      </div>
-      <div>
-        <p>Servicios Premo</p>
-      </div>
-    </div>
-    <div class="row g-0 box-icon-classic-bordered justify-content-center">
+    <div class="flex flex-col items-center">
       <div>
         <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
       </div>

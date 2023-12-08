@@ -30,16 +30,16 @@
 }
 
 #textoSloganOne {
-  translate: -6rem 1rem;
+  translate: -2rem 1rem;
 }
 
 #textoSloganTwo {
-  translate: -3.2rem 2.4rem;
+  translate: -1.5rem 2.4rem;
 }
 
 @media screen and (min-width: 768px) {
   .divTextHeader {
-    translate: 17rem 5rem;
+    translate: 10rem 5rem;
     width: 300px;
     font-size: xx-large;
   }

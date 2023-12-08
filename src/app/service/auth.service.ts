@@ -5,16 +5,16 @@ import { AuthResponse } from '../auth/interfaces/authResponse.interface';
 import { LoginRequest } from '../auth/interfaces/loginRequest.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { enviroment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
-  private jwtHelper = inject(JwtHelperService);
-  private router = inject(Router);
-
-  private baseUrl: string;
+  private readonly http = inject(HttpClient);
+  private readonly jwtHelper = inject(JwtHelperService);
+  private readonly router = inject(Router);
+  private readonly baseUrl: string = enviroment.base_url ;
 
   private isLoginSubject = new BehaviorSubject<boolean>(true);
   private user?: string;
@@ -23,7 +23,6 @@ export class AuthService {
 
   constructor() {
     // this.baseUrl = 'http://localhost:8080/auth';
-    this.baseUrl = 'https://backend-beautician-website-production.up.railway.app/auth';
 
     // ? is there token?
     this.checkToken() ? this.router.navigate(['/admin/home']) : this.router.navigate(['/auth/login']);
@@ -47,7 +46,7 @@ export class AuthService {
   }
 
   login(formValue: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, formValue).pipe(
+    return this.http.post<AuthResponse>(`${this.baseUrl}/auth/login`, formValue).pipe(
       tap(user => (this.user = user.username)),
       tap(user => localStorage.setItem('user', user.username)),
       tap(token => localStorage.setItem('token', token.token))
