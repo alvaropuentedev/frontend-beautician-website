@@ -15,10 +15,6 @@ export class AuthService {
   private readonly router = inject(Router);
   private readonly baseUrl: string = enviroment.base_url ;
 
-  // Set Loading
-  private isLoginSubject = new BehaviorSubject<boolean>(true);
-  public isLogin$ = this.isLoginSubject.asObservable();
-
   private _currentUser = signal<User | null>(null);
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
 
@@ -31,15 +27,6 @@ export class AuthService {
 
   constructor() {
     this.checkTokenIsActive().subscribe();
-  }
-
-  checkToken() {
-    const token = localStorage.getItem('token');
-    return token ? true : false;
-  }
-
-  setLoginStatus(status: boolean) {
-    this.isLoginSubject.next(status);
   }
 
   login(username: string, password: string): Observable<boolean> {

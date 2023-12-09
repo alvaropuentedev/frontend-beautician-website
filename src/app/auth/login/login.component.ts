@@ -25,16 +25,13 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-  constructor() {
-    this.authService.setLoginStatus(false);
-  }
+  constructor() { }
 
   submitForm() {
     this.buttonLogin = true;
     const { username, password } = this.loginForm.value;
     this.authService.login(username, password).subscribe({
       next: () => {
-        this.authService.setLoginStatus(true);
         this.router.navigateByUrl('/admin/home');
         this.buttonLogin = false;
       },
