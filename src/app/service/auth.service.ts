@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, of, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { enviroment } from '../../environments/environments';
@@ -50,9 +50,10 @@ export class AuthService {
     }
 
   logout() {
-    this.user = undefined;
-    this.isLoginSubject.next(false);
+    this._authStatus.set(AuthStatus.notAuthenticated);
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/auth/login');
   }
 
   public checkTokenIsActive(): Observable<boolean> {
