@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 
@@ -10,11 +10,9 @@ import { AuthService } from '../../service/auth.service';
   styleUrl: './admin-page.component.css'
 })
 export class AdminPageComponent {
-  private readonly authService = inject(AuthService);
+  private readonly authService = inject( AuthService );
 
+  public user = computed( () => this.authService.currentUser() );
   constructor() { }
 
-  get user():string | undefined {
-    return this.authService.currentUser;
-  }
 }

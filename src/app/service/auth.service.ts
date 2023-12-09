@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { AuthResponse } from '../auth/interfaces/authResponse.interface';
-import { LoginRequest } from '../auth/interfaces/loginRequest.interface';
+import { Injectable, computed, inject, signal } from '@angular/core';
+import { BehaviorSubject, Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { enviroment } from '../../environments/environments';
+import { AuthStatus, LoginResponse, User } from '../auth/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,24 +15,22 @@ export class AuthService {
   private readonly router = inject(Router);
   private readonly baseUrl: string = enviroment.base_url ;
 
+  // Set Loading
   private isLoginSubject = new BehaviorSubject<boolean>(true);
-  private user?: string;
-  private userToken?: string;
   public isLogin$ = this.isLoginSubject.asObservable();
 
+  private _currentUser = signal<User | null>(null);
+  private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+
+  //! Exposed
+  public currentUser = computed(() => this._currentUser());
+  public authStatus = computed(() => this._authStatus());
+  public user: any;
+
+  // private baseUrl = 'http://localhost:8080';
+
   constructor() {
-    // this.baseUrl = 'http://localhost:8080/auth';
-
-    // ? is there token?
-    this.checkToken() ? this.router.navigate(['/admin/home']) : this.router.navigate(['/auth/login']);
-
-    this.userToken = localStorage.getItem('user') ?? undefined;
-    this.userToken ? (this.user = this.userToken) : (this.user = undefined);
-  }
-
-  get currentUser(): string | undefined {
-    if (!this.user) return undefined;
-    return structuredClone(this.user);
+    this.checkTokenIsActive().subscribe();
   }
 
   checkToken() {
@@ -45,25 +42,45 @@ export class AuthService {
     this.isLoginSubject.next(status);
   }
 
-  login(formValue: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.baseUrl}/auth/login`, formValue).pipe(
-      tap(user => (this.user = user.username)),
-      tap(user => localStorage.setItem('user', user.username)),
-      tap(token => localStorage.setItem('token', token.token))
-    );
-  }
+  login(username: string, password: string): Observable<boolean> {
+    const url = `${this.baseUrl}/auth/login`;
+    const body = { username, password };
+
+    return this.http.post<LoginResponse>(url, body).pipe(
+      tap(({ username, token }) => {
+        this.user = username;
+        this._currentUser.set(username);
+        this._authStatus.set(AuthStatus.authenticated);
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', this.user);
+      }),
+      map(() => true),
+
+      catchError(err => {
+        return throwError(() => err);
+      })
+      );
+    }
 
   logout() {
     this.user = undefined;
     this.isLoginSubject.next(false);
-    localStorage.removeItem('user');
     localStorage.removeItem('token');
   }
 
-  public isAuthenticated(): boolean {
+  public checkTokenIsActive(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    // Check whether the token is expired and return
-    // true or false
-    return !this.jwtHelper.isTokenExpired(token);
+    const user = localStorage.getItem('user');
+    this.user = user;
+    const checkToken = this.jwtHelper.isTokenExpired(token);
+
+    if (!checkToken) {
+      this._currentUser.set(this.user);
+      this._authStatus.set(AuthStatus.authenticated);
+      return of(true);
+    }
+    this.user = null;
+    this._authStatus.set(AuthStatus.notAuthenticated);
+    return of(false);
   }
 }

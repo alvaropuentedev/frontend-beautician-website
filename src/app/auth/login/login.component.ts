@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { LoginRequest } from '../interfaces/loginRequest.interface';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 
@@ -13,14 +12,15 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  private readonly fb = inject(FormBuilder);
-  private readonly authService = inject(AuthService);
-  private readonly router = inject(Router);
+  private readonly fb          = inject( FormBuilder );
+  private readonly authService = inject( AuthService );
+  private readonly router      = inject( Router );
 
-  private user?: string;
+
   public buttonLogin = false;
+  public showAlert = false;
 
-  public loginForm = this.fb.group({
+  public loginForm: FormGroup = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
@@ -31,18 +31,24 @@ export class LoginComponent {
 
   submitForm() {
     this.buttonLogin = true;
-    this.authService.login(this.loginForm.value as LoginRequest).subscribe({
+    const { username, password } = this.loginForm.value;
+    this.authService.login(username, password).subscribe({
       next: () => {
         this.authService.setLoginStatus(true);
-        this.router.navigate(['/admin/home']);
+        this.router.navigateByUrl('/admin/home');
         this.buttonLogin = false;
       },
       error: () => {
         this.buttonLogin = false;
+        this.showAlert = true;
+        setTimeout( () => {
+          this.showAlert = false;
+        }, 3000);
 
       }
     }
 
     );
   }
+
 }
