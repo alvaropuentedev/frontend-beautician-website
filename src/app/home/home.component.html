@@ -59,19 +59,26 @@
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <button id="scrollToHome" (click)="handleAutoScrollAndFocus('scrollToHome', 'targetHome')" class="text-[18px]">
+          <button
+            id="scrollToHome"
+            (click)="handleAutoScrollAndFocus('scrollToHome', 'targetHome')"
+            class="text-[18px]">
             Home
           </button>
         </li>
         <li>
           <button
             id="scrollToServices"
-            (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')" class="text-[18px]">
+            (click)="handleAutoScrollAndFocus('scrollToServices', 'targetServices')"
+            class="text-[18px]">
             Servicios
           </button>
         </li>
         <li>
-          <button id="scrollToContact" (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')" class="text-[18px]">
+          <button
+            id="scrollToContact"
+            (click)="handleAutoScrollAndFocus('scrollToContact', 'targetContact')"
+            class="text-[18px]">
             Contacto
           </button>
         </li>
@@ -131,49 +138,77 @@
         <span id="textoSloganTwo" class="absolute"> en Buenas Manos </span>
       </div>
       <div
-        class="sm:w-[500px] sm:h-[450px] h-60 w-56 translate-x-[3.2rem]
-         translate-y-[2rem] lg:translate-x-[4rem] lg:translate-y-[2rem]">
-        <img src="../../assets/img/colorsss.png" alt="" class="" />
+        class="sm:w-[500px] sm:h-[450px] h-60 w-56 translate-x-[3.2rem] translate-y-[2rem] lg:translate-x-[4rem] lg:translate-y-[2rem]">
+        <img src="../../assets/img/colorsss.png" alt="..." class="" />
       </div>
     </div>
   </div>
   <div class="bg-base-100 h-72 w-full"></div>
   <!--? SERVICES -->
-  <div id="targetServices" class="h-fit w-full bg-[#f4f4f4] grid grid-cols-2">
-    <div class="flex flex-col items-center">
-      <div class="">
-        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
+  <div id="targetServices" class="h-fit bg-[#f4f4f4]">
+    <div class="p-5">
+      <!-- First row services -->
+      <div class="sm:flex sm:justify-evenly sm:flex-row sm:gap-1 flex flex-col gap-4">
+        <div class="flex flex-wrap flex-col items-center">
+          <div class="px-4 flex justify-center">
+            <img
+              class="rounded-full w-24 h-24 sm:w-40 sm:h-40"
+              src="../../assets/img/service-img/handRounded.png"
+              alt="..." />
+          </div>
+          <p class="service-title">Manicura</p>
+          <p class="text-gray-400 max-w-xs text-center">
+            La manicura ofrece una renovación completa de las uñas, con un pulido adicional para realzar su
+            apariencia.
+          </p>
+        </div>
+        <div class="flex flex-wrap flex-col items-center">
+          <div class="px-4 flex justify-center">
+            <img
+              class="rounded-full w-24 h-24 sm:w-40 sm:h-40"
+              src="../../assets/img/service-img/pedicureRounded.png"
+              alt="..." />
+          </div>
+          <p class="service-title">Pedicura</p>
+          <p class="text-gray-400 max-w-xs text-center">
+            Los servicios de pedicura brindan una restauración completa de sus uñas con un pulido adicional.
+          </p>
+        </div>
       </div>
-      <div>
-        <p>Servicios Premo</p>
+      <!-- Second row service -->
+      <div class="sm:flex sm:justify-evenly sm:flex-row sm:gap-1 flex flex-col gap-4 mt-5">
+        <div class="flex flex-wrap flex-col items-center">
+          <div class="px-4 flex justify-center">
+            <img
+              class="rounded-full w-24 h-24 sm:w-40 sm:h-40"
+              src="../../assets/img/service-img/eyeRounded.png"
+              alt="..." />
+          </div>
+          <p class="service-title">Lifting de pestañas</p>
+          <p class="text-gray-400 max-w-xs text-center">
+            El lifting de pestañas realza la curvatura y longitud natural de las pestañas, proporcionando una
+            mirada más expresiva y duradera.
+          </p>
+        </div>
+        <div class="flex flex-wrap flex-col items-center">
+          <div class="px-4 flex justify-center">
+            <img
+              class="rounded-full w-24 h-24 sm:w-40 sm:h-40"
+              src="../../assets/img/service-img/eyeRounded.png"
+              alt="..." />
+          </div>
+          <p class="service-title">Lifting de pestañas</p>
+          <p class="text-gray-400 max-w-xs text-center">
+            La higiene facial revitaliza la piel mediante un tratamiento que limpia, exfolia y nutre,
+            proporcionando un aspecto fresco y saludable.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col items-center">
-      <div>
-        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
-      </div>
-      <div>
-        <p>Servicios Premo</p>
-      </div>
-    </div>
-    <div class="flex flex-col items-center">
-      <div>
-        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
-      </div>
-      <div>
-        <p>Servicios Premo</p>
-      </div>
-    </div>
-    <div class="flex flex-col items-center">
-      <div>
-        <img class="rounded-full" src="../../assets/img/hands1.png" width="200px" height="80" alt="" />
-      </div>
-      <div>
-        <p>Servicios Premo</p>
-      </div>
+    <div class="w-full mt-5">
+      <img src="../../assets/img/asideServices.jpeg" class="h-[380px] w-full" alt="" />
     </div>
   </div>
-  <div class="bg-rose-200 h-72 w-full"></div>
 </main>
 <!--* FOOTER -->
 <footer

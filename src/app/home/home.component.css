@@ -9,7 +9,7 @@
   height: fit-content;
 }
 
-#textoSloganOne, #textoSloganTwo {
+#textoSloganOne, #textoSloganTwo, .service-title {
   font-family: 'KaushanScript Sans';
 }
 

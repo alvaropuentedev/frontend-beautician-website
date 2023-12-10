@@ -21,6 +21,7 @@ export class AuthService {
   //! Exposed
   public currentUser = computed(() => this._currentUser());
   public authStatus = computed(() => this._authStatus());
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public user: any;
 
   // private baseUrl = 'http://localhost:8080';
