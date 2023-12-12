@@ -1,8 +1,8 @@
 @defer (on viewport) {
-<header class="flex w-screen h-12 text-xs sm:text-sm top-0">
+<header class="roboto flex w-screen h-12 text-xs sm:text-sm top-0">
   <div class="flex w-full justify-evenly items-center">
     <div class="flex gap-1">
-      <strong class="">Teléfono:</strong>
+      <strong>Teléfono:</strong>
       <a href="tel:644-038-254">644038254</a>
     </div>
     <div class="flex gap-1">
@@ -42,7 +42,7 @@
   </div>
 </header>
 <!-- TODO White Navbar -->
-<div id="white-navbar" class="navbar bg-base-100 border-b-[1px]">
+<div id="white-navbar" class="roboto navbar bg-base-100 border-b-[1px]">
   <div class="navbar-start">
     <div class="dropdown">
       <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
@@ -129,7 +129,7 @@
   </div>
 </div>
 <!--* MAIN -->
-<main class="row-span-2">
+<main class="roboto row-span-2">
   <!-- Top -->
   <div class="w-full h-auto">
     <div
@@ -146,21 +146,30 @@
     </div>
   </div>
   <!-- TOP -->
-  <div class="bg-base-100 w-full h-auto flex flex-col items-center mb-20 lg:h-[820px]">
+  <div class="container-girl-text bg-base-100 w-full h-auto flex flex-col items-center mb-20">
     <div class="h-auto">
       <!-- IMG GIRL -->
-      <img class="girl-img-small h-auto w-auto lg:hidden" src="../../assets/img/girl-3033718_1920.jpg" alt="..." />
-      <img class="girl-img-long hidden girlImg h-auto w-auto lg:flex lg:h-[500px] relative z-10" src="../../assets/img/girl-noBG-preview.png" alt="..." />
-    <div>
-      <img class="hidden bg-girl z-0 lg:flex relative" src="../../assets/img/background/brushbg.png" alt="...">
-    </div>
+      <img
+        class="girl-img-small h-auto w-auto lg:hidden"
+        src="../../assets/img/girl-3033718_1920.jpg"
+        alt="..." />
+      <img
+        class="girl-img-long hidden girlImg h-auto w-auto lg:flex lg:h-[500px] relative z-10"
+        src="../../assets/img/girl-noBG-preview.png"
+        alt="..." />
+      <div>
+        <img
+          class="bg-girl hidden z-0 lg:flex relative"
+          src="../../assets/img/background/brushbg.png"
+          alt="..." />
+      </div>
     </div>
     <!-- TEXT CLIENTS -->
     <div class="text-client text-left p-6">
       <h1 class="service-title text-left text-3xl font-bold">Por qué nuestros clientes nos eligen</h1>
       <p class="text-gray-400 max-w-xs lg:max-w-[50rem] mt-4">
-        Experimenta la elegancia y el bienestar en nuestro salón de uñas, donde utilizamos productos orgánicos y
-        técnicas especializadas para realzar tu belleza natural. Ofrecemos servicios personalizados y un
+        Experimenta la elegancia y el bienestar en nuestro salón de uñas, donde utilizamos productos orgánicos
+        y técnicas especializadas para realzar tu belleza natural. Ofrecemos servicios personalizados y un
         ambiente relajante para una experiencia única de cuidado personal.
       </p>
     </div>
@@ -238,7 +247,7 @@
 <footer
   class="flex flex-col sm:flex-row md:grid-cols-10 footer p-12 bg-base-100 text-base-content sm:justify-evenly">
   <!-- Services -->
-  <nav>
+  <nav class="roboto">
     <header class="footer-title">Servicios</header>
     <p>Manicura</p>
     <p>Pedicura</p>
@@ -247,7 +256,7 @@
     <p>Y más...</p>
   </nav>
   <!-- Where we are -->
-  <nav>
+  <nav class="roboto">
     <p class="footer-title">Donde estamos:</p>
     <p class="grid grid-flow-col">
       <!-- map icon -->
@@ -269,7 +278,7 @@
     </p>
   </nav>
   <!-- Contact -->
-  <nav id="targetContact">
+  <nav id="targetContact" class="robot">
     <header class="footer-title">Contacto</header>
     <p>Tlf:</p>
     <strong>
@@ -312,9 +321,9 @@
   </nav>
 </footer>
 } @placeholder (minimum 2000ms) {
-  <body class="h-screen flex items-center justify-center bg-white">
-    <span class="loading loading-ball loading-lg"></span>
-    <span class="loading loading-ball loading-md"></span>
-    <span class="loading loading-ball loading-lg"></span>
-  </body>
+<body class="h-screen flex items-center justify-center bg-white">
+  <span class="loading loading-ball loading-lg"></span>
+  <span class="loading loading-ball loading-md"></span>
+  <span class="loading loading-ball loading-lg"></span>
+</body>
 }

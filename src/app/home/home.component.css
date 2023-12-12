@@ -1,6 +1,9 @@
 #title {
   font-family: 'BeautyWind Sans', sans-serif;
 }
+.roboto {
+  font-family: 'Roboto-regular', sans-serif;
+}
 
 #white-navbar {
   position: sticky;
@@ -53,6 +56,14 @@
     width: 500px;
     font-size: xx-large;
   }
+}
+@media screen and (min-width: 1024px) {
+  .div-text-Header {
+    translate: 10rem 5rem;
+    width: 500px;
+    font-size: xx-large;
+  }
+
   #texto-slogan-one {
     translate: -6rem -7rem;
   }
@@ -60,29 +71,57 @@
   #texto-slogan-two {
     translate: -5rem -4rem;
   }
+
+  .container-girl-text {
+    height: 600px;
+  }
+
+  .bg-girl {
+    translate: -20rem -25rem ;
+    max-width: 900px;
+  }
+
+  .text-client{
+    translate: 15rem -42rem;
+    font-size: 20px;
+    max-width: 500px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .div-text-Header {
     translate: 10rem 8rem;
-    width: 800px;
+    width: 900px;
     font-size: 50px;
   }
-  .girl-img-long {
-    translate: -30rem 50rem;
+
+  #texto-slogan-one {
+    translate: -6rem -8rem;
   }
+
+  #texto-slogan-two {
+    translate: -5rem -5rem;
+  }
+
+  .container-girl-text {
+    height: 800px;
+  }
+
+  /* .girl-img-long {
+    translate: -30rem 50rem;
+  } */
   .girl-img-long {
     animation:  imgSlide 5s ease-out;
     translate: -20rem 10rem;
   }
 
   .bg-girl {
-    translate: -30rem -20rem;
+    translate: -25rem -20rem;
     height: 600px;
     width: 800px;
   }
   .text-client{
-    translate: 20rem -35rem;
+    translate: 20rem -40rem;
     font-size: 20px;
   }
 }
