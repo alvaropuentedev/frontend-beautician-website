@@ -1,5 +1,5 @@
 @defer (on viewport) {
-<header class="bg-custom-pastel-pink flex w-screen h-12 text-xs sm:text-sm top-0">
+<header class="flex w-screen h-12 text-xs sm:text-sm top-0">
   <div class="flex w-full justify-evenly items-center">
     <div class="flex gap-1">
       <strong class="">Teléfono:</strong>
@@ -42,7 +42,7 @@
   </div>
 </header>
 <!-- TODO White Navbar -->
-<div id="whiteNavbar" class="navbar bg-base-100 border-b-[1px]">
+<div id="white-navbar" class="navbar bg-base-100 border-b-[1px]">
   <div class="navbar-start">
     <div class="dropdown">
       <label for="" tabindex="0" class="btn btn-ghost lg:hidden">
@@ -133,26 +133,32 @@
   <!-- Top -->
   <div class="w-full h-auto">
     <div
-      class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-[20rem] sm:h-[35rem]"
+      class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-[20rem] sm:h-[50rem]"
       style="background-image: url('../../assets/img/footer-img/brushes-5566574_1920.jpg')">
       <div id="targetHome" class="h-full w-full">
         <div class="flex w-full justify-center">
-          <div class="divTextHeader">
-            <span id="textoSloganOne" class="absolute"> Deja Tus Uñas </span>
-            <span id="textoSloganTwo" class="absolute"> en Buenas Manos </span>
+          <div class="div-text-Header">
+            <span id="texto-slogan-one" class="absolute"> Deja Tus Uñas </span>
+            <span id="texto-slogan-two" class="absolute"> en Buenas Manos </span>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- TOP -->
-  <div class="bg-base-100 w-full h-auto flex flex-col items-center mb-20">
+  <div class="bg-base-100 w-full h-auto flex flex-col items-center mb-20 lg:h-[820px]">
     <div class="h-auto">
-      <img class="h-auto w-auto" src="../../assets/img/girl-3033718_1920.jpg" alt="" />
+      <!-- IMG GIRL -->
+      <img class="girl-img-small h-auto w-auto lg:hidden" src="../../assets/img/girl-3033718_1920.jpg" alt="..." />
+      <img class="girl-img-long hidden girlImg h-auto w-auto lg:flex lg:h-[500px] relative z-10" src="../../assets/img/girl-noBG-preview.png" alt="..." />
+    <div>
+      <img class="hidden bg-girl z-0 lg:flex relative" src="../../assets/img/background/brushbg.png" alt="...">
     </div>
-    <div class="text-left p-6">
+    </div>
+    <!-- TEXT CLIENTS -->
+    <div class="text-client text-left p-6">
       <h1 class="service-title text-left text-3xl font-bold">Por qué nuestros clientes nos eligen</h1>
-      <p class="text-gray-400 max-w-xs mt-4">
+      <p class="text-gray-400 max-w-xs lg:max-w-[50rem] mt-4">
         Experimenta la elegancia y el bienestar en nuestro salón de uñas, donde utilizamos productos orgánicos y
         técnicas especializadas para realzar tu belleza natural. Ofrecemos servicios personalizados y un
         ambiente relajante para una experiencia única de cuidado personal.
@@ -178,10 +184,11 @@
             apariencia.
           </p>
         </div>
+        <!-- PEDICURE -->
         <div class="flex flex-wrap flex-col items-center">
           <div class="px-4 flex justify-center">
             <img
-              class="rounded-full w-24 h-24 sm:w-40 sm:h-40"
+              class="rounded-full w-24 h-24 sm:w-40 sm:h-40 opacity-[0.77]"
               src="../../assets/img/service-img/pedicureRounded.png"
               alt="..." />
           </div>
@@ -264,8 +271,10 @@
   <!-- Contact -->
   <nav id="targetContact">
     <header class="footer-title">Contacto</header>
-    <strong>Tlf:</strong>
-    <a href="tel:644-038-254">644038254</a>
+    <p>Tlf:</p>
+    <strong>
+      <a href="tel:644-038-254">644038254</a>
+    </strong>
     <div class="grid grid-flow-col gap-4">
       <!-- Whatsapp -->
       <a aria-label="Chat on WhatsApp" href="https://wa.me/+34644038254">
