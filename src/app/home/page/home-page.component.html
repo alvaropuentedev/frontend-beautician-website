@@ -1,1 +1,9 @@
+@defer (on viewport) {
 <app-home />
+} @placeholder (minimum 2000ms) {
+<body class="h-screen flex items-center justify-center bg-white">
+  <span class="loading loading-ball loading-lg"></span>
+  <span class="loading loading-ball loading-md"></span>
+  <span class="loading loading-ball loading-lg"></span>
+</body>
+}
