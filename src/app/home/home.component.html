@@ -1,5 +1,5 @@
 @defer (on viewport) {
-<header class="roboto flex w-screen h-12 text-xs sm:text-sm top-0">
+<header id="targetHome" class="roboto flex w-screen h-12 text-xs sm:text-sm top-0">
   <div class="flex w-full justify-evenly items-center">
     <div class="flex gap-1">
       <strong>Teléfono:</strong>
@@ -10,7 +10,7 @@
       <p>Lunes-Viernes: 9h a 14h</p>
     </div>
     <div #socilIcons class="hidden sm:flex gap-4">
-      <div class="sm:hover:text-[color:white] cursor-pointer">
+      <div class="sm:hover:text-[color:green] cursor-pointer">
         <!-- Whatsapp -->
         <a aria-label="Chat on WhatsApp" href="https://wa.me/+34644038254">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@
           </svg>
         </a>
       </div>
-      <div class="hover:text-[color:white] cursor-pointer">
+      <div class="hover:text-[color:pink] cursor-pointer">
         <!-- Instagram -->
         <a href="https://www.instagram.com/diana.garcia.estetica/">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@
     </div>
   </div>
 </header>
-<!-- TODO White Navbar -->
+<!-- * White Navbar -->
 <div id="white-navbar" class="roboto navbar bg-base-100 border-b-[1px]">
   <div class="navbar-start">
     <div class="dropdown">
@@ -135,7 +135,7 @@
     <div
       class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center h-[20rem] sm:h-[50rem]"
       style="background-image: url('../../assets/img/footer-img/brushes-5566574_1920.jpg')">
-      <div id="targetHome" class="h-full w-full">
+      <div class="h-full w-full">
         <div class="flex w-full justify-center">
           <div class="div-text-Header">
             <span id="texto-slogan-one" class="absolute"> Deja Tus Uñas </span>
@@ -238,9 +238,9 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-auto mt-5">
-      <img src="../../assets/img/footer-img/cosmetics-2746013_1920.jpg" class="w-full" alt="" />
-    </div>
+  </div>
+  <div class="w-full h-auto">
+    <img src="../../assets/img/footer-img/cosmetics-2746013_1920.jpg" class="w-full" alt="" />
   </div>
 </main>
 <!--* FOOTER -->
@@ -284,7 +284,7 @@
     <strong>
       <a href="tel:644-038-254">644038254</a>
     </strong>
-    <div class="grid grid-flow-col gap-4">
+    <div class="grid grid-flow-col gap-4 mt-5">
       <!-- Whatsapp -->
       <a aria-label="Chat on WhatsApp" href="https://wa.me/+34644038254">
         <svg
