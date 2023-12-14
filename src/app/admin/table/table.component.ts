@@ -26,12 +26,13 @@ export class TableComponent implements OnInit {
   private clickEvent: Subscription;
   public deleteAlertSucces = this.adminService.deleteAlertSucces;
   public deleteAlertError = this.adminService.deleteAlertError;
+  public totalAppointmentDates = 0;
 
   constructor() {
     this.clickEvent = this.adminService.getNewClientEvent().subscribe({
       next: () => {
         this.getListClients();
-      },
+      }
     });
   }
 
@@ -50,6 +51,7 @@ export class TableComponent implements OnInit {
     this.adminService.listClient().subscribe({
       next: (data: Client[]) => {
         this.clients = data;
+        this.totalAppointmentDates = this.countTotalClients(this.clients);
         this.loading = false;
       },
       error: () => {
@@ -71,5 +73,15 @@ export class TableComponent implements OnInit {
         this.adminService.handleDeleteAlertErrorMsg();
       }
     });
+  }
+
+  countTotalClients(clients: Client[]) {
+    const occurrencesCount = clients.reduce((count, obj) => {
+      if (obj.id_client) {
+        return count + 1;
+      }
+      return count;
+    }, 0)
+    return occurrencesCount;
   }
 }
