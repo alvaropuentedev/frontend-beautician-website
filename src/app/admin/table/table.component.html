@@ -1,49 +1,105 @@
-<div class="overflow-x-auto">
-  <table class="table table-zebra">
-    <!-- head -->
-    <thead>
-      <tr>
-        @for (cols of cols; track $index) {
-        <th>
-          {{ cols.header }}
-        </th>
-        }
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      @for (client of clients; track $index) {
-      <tr>
-        <th>
-          {{ client.id_client }}
-        </th>
-        <td>
-          {{ client.name }}
-        </td>
-        <td>
-          {{ client.phone }}
-        </td>
-        <td>
-          {{ client.appointment_date }}
-        </td>
-        <td>
-          <button class="cursor-pointer" (click)="deleteClient(client.id_client)">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-          </button>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
+@if (loading) {
+<div class="flex justify-center">
+  <div
+    class="inline-block h-8 w-8 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
+    role="status">
+    <span
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+      >Loading...</span
+    >
+  </div>
 </div>
+} @else {
+<div class="flex flex-col overflow-x-auto">
+  <div class="sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left text-sm font-light">
+          <thead
+            class="border-b font-medium border-info-200 bg-custom-pastel-pink text-neutral-800 dark:border-neutral-500">
+            <tr class="border-b border-info-200 bg-info-100 text-neutral-800">
+              @for (cols of cols; track $index) {
+              <th scope="col" class="px-6 py-4">
+                {{ cols.header }}
+              </th>
+              }
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            @for (client of clients; track $index) {
+            <tr class="border-b dark:border-neutral-500">
+              <td class="whitespace-nowrap px-6 py-4 font-medium">
+                {{ client.id_client }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4">
+                {{ client.name }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4">
+                {{ client.phone }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4">
+                {{ client.appointment_date }}
+              </td>
+              <td class="whitespace-nowrap px-6 py-4">
+                <button (click)="deleteClient(client.id_client)">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ALERT Succes -->
+@if (deleteAlertSucces()) {
+<div class="absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-green-200 px-6 py-5 text-base text-success-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    Cita eliminada
+  </div>
+</div>
+}
+<!-- ALERT Succes-->
+<!-- ALERT Error -->
+@if (deleteAlertError()) {
+<div class="absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    No se ha podido eliminar la cita
+  </div>
+</div>
+}
+<!-- ALERT Error-->
+}

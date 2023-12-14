@@ -18,7 +18,8 @@ export class SidebarComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
 
   public user = computed(() => this.authService.currentUser());
-  public showAlert = false;
+  public showAlertSucces = this.adminService.showAlertSucces;
+  public showAlertError = this.adminService.showAlertError;
 
   public createClientForm: FormGroup = this.fb.group({
     name: [' ', Validators.required],
@@ -27,27 +28,28 @@ export class SidebarComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // Inicializar los componentes de tw-elements
+    // components tw-elements
     initTE({ Modal, Ripple, Sidenav, Datetimepicker, Input });
   }
 
   submitClientForm() {
     const { name, phone, appointment_date } = this.createClientForm.value;
-    this.adminService.createClient(name, phone, appointment_date)
-    .subscribe({
+    this.adminService.createClient(name, phone, appointment_date).subscribe({
       next: () => {
-        this.showAlert = true;
-        setTimeout( () => {
-          this.showAlert = false;
-        }, 3000);
+        this.adminService.handleAlertSuccesMsg();
+        this.sharedLoad();
       },
-      error: (error) => {
-        console.log('Error create client!', error);
-      }
-    })
+      error: () => {
+        this.adminService.handleAlertErrorMsg();
+      },
+    });
+  }
+
+  sharedLoad() {
+    this.adminService.sendNewClientEvent();
   }
 
   logout() {
-    this.authService.logout()
+    this.authService.logout();
   }
 }
