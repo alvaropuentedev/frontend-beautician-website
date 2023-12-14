@@ -43,8 +43,8 @@ export class TableComponent implements OnInit {
       { header: '#', field: 'id_firma' },
       { header: 'Nombre', field: 'Nombre' },
       { header: 'Teléfono', field: 'Teléfono' },
-      { header: 'Fecha proxíma Cita', field: 'Fecha proxíma Cita' },
-      { header: 'Hora proxíma Cita', field: 'Hora proxíma Cita' },
+      { header: 'Fecha', field: 'Fecha proxima Cita' },
+      { header: 'Hora', field: 'Hora proxima Cita' },
       { header: '', field: '' },
     ];
     this.getListClients();
