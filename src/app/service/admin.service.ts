@@ -2,13 +2,15 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Client } from '../admin/interfaces/client.interface';
+import { enviroment } from '../../environments/environments';
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
   private readonly http = inject(HttpClient);
+  private readonly baseUrl: string = enviroment.base_url ;
 
 
-  private baseUrl = 'http://localhost:8080'
+  // private baseUrl = 'http://localhost:8080'
 
   constructor() {}
 
