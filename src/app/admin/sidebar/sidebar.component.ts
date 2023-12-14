@@ -4,6 +4,7 @@ import { AuthService } from '../../service/auth.service';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Modal, Ripple, initTE, Sidenav, Datetimepicker, Input } from 'tw-elements';
+import { MessageService } from '../../service/message.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,11 +16,12 @@ import { Modal, Ripple, initTE, Sidenav, Datetimepicker, Input } from 'tw-elemen
 export class SidebarComponent implements OnInit {
   private readonly authService = inject(AuthService);
   private readonly adminService = inject(AdminService);
+  private readonly messageService = inject(MessageService);
   private readonly fb = inject(FormBuilder);
 
   public user = computed(() => this.authService.currentUser());
-  public showAlertSucces = this.adminService.showAlertSucces;
-  public showAlertError = this.adminService.showAlertError;
+  public showAlertSucces = this.messageService.showAlertSucces;
+  public showAlertError = this.messageService.showAlertError;
 
   public createClientForm: FormGroup = this.fb.group({
     name: [' ', Validators.required],
@@ -36,11 +38,11 @@ export class SidebarComponent implements OnInit {
     const { name, phone, appointment_date } = this.createClientForm.value;
     this.adminService.createClient(name, phone, appointment_date).subscribe({
       next: () => {
-        this.adminService.handleAlertSuccesMsg();
+        this.messageService.handleAlertSuccesMsg();
         this.sharedLoad();
       },
       error: () => {
-        this.adminService.handleAlertErrorMsg();
+        this.messageService.handleAlertErrorMsg();
       },
     });
   }

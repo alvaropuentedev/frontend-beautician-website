@@ -28,7 +28,7 @@
             class="border-b font-medium border-info-200 bg-custom-pastel-pink text-neutral-800 dark:border-neutral-500">
             <tr class="border-b border-info-200 bg-info-100 text-neutral-800">
               @for (cols of cols; track $index) {
-              <th scope="col" class="px-6 py-4">
+              <th scope="col" class="roboto px-6 py-4">
                 {{ cols.header }}
               </th>
               }
@@ -37,17 +37,20 @@
           <tbody class="bg-white">
             @for (client of clients; track $index) {
             <tr class="border-b dark:border-neutral-500">
-              <td class="whitespace-nowrap px-6 py-4 font-medium">
+              <td class="roboto whitespace-nowrap px-6 py-4 font-medium">
                 {{ client.id_client }}
               </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              <td class="roboto whitespace-nowrap px-6 py-4">
                 {{ client.name }}
               </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              <td class="roboto whitespace-nowrap px-6 py-4">
                 {{ client.phone }}
               </td>
-              <td class="whitespace-nowrap px-6 py-4">
-                {{ client.appointment_date }}
+              <td class="roboto whitespace-nowrap px-6 py-4">
+                {{ client.date }}
+              </td>
+              <td class="roboto whitespace-nowrap px-6 py-4">
+                {{ client.time }}
               </td>
               <td class="whitespace-nowrap px-6 py-4">
                 <button (click)="deleteClient(client.id_client)">

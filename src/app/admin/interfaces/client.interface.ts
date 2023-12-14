@@ -3,4 +3,6 @@ export interface Client {
   name: string;
   phone: string;
   appointment_date: string;
+  date?: string;
+  time?: string;
 }
