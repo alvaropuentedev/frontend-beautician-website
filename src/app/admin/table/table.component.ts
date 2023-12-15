@@ -68,7 +68,9 @@ export class TableComponent implements OnInit {
       const dateTimeArray = elem.appointment_date.split('T');
 
       if (dateTimeArray.length === 2) {
-        const [date, time] = dateTimeArray;
+        // eslint-disable-next-line prefer-const
+        let [ date, time ] = dateTimeArray;
+        date = this.reverseDateFormat(date);
         return {
           ...elem,
           date,
@@ -80,6 +82,12 @@ export class TableComponent implements OnInit {
       }
     });
   }
+
+  reverseDateFormat(date: string) {
+    const [year, month, day] = date.split('-');
+    return `${day}-${month}-${year}`;
+  }
+
 
   deleteClient(id_client: number) {
     this.loading = true;
