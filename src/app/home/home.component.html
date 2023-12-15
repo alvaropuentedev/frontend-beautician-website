@@ -128,21 +128,37 @@
   </div>
 </div>
 <!--* MAIN -->
-<main class="roboto row-span-2">
+<main class="roboto row-span-2 w-screen">
   <!-- Top -->
   <div class="w-screen h-[30rem] sm:h-auto">
-    <div class="opacity-75 w-full h-[50rem]">
-      <img src="../../assets/img/background/face-top.png" alt="..." class="w-full h-96 lg:h-full object-cover" />
+    <div class="hidden sm:block opacity-75 w-full h-[50rem]">
+      <img
+        src="../../assets/img/background/face-top.png"
+        alt="..."
+        class="w-full h-96 lg:h-full object-cover" />
     </div>
-
-      <div class="h-full w-full">
-        <div class="flex w-full justify-center">
-          <!-- <div class="div-text-Header">
+    <!-- ? mobile -->
+    <div
+      class="sm:hidden relative opacity-75 w-[93%] object-cover bg-white p-4 border border-gray-300 rounded-lg shadow-md rotate-6 translate-x-2">
+      <img
+        src="../../assets/img/background/face-top.png"
+        alt="..."
+        class="w-full h-96 object-cover rounded" />
+      <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-2 text-center">
+        <span class="text-xs font-bold text-gray-700" id="texto-slogan-one"
+          >Salon de Belleza Diana Garcia</span
+        >
+      </div>
+    </div>
+    <div class="h-full w-full">
+      <div class="flex w-full justify-center">
+        <!-- <div class="div-text-Header">
             <span id="texto-slogan-one" class="absolute"> Salón de Belleza </span>
             <span id="texto-slogan-two" class="absolute"> Diana García </span>
           </div> -->
-        </div>
       </div>
+    </div>
   </div>
   <!-- TOP -->
   <div class="container-girl-text bg-base-100 w-full h-auto flex flex-col items-center mb-20">
