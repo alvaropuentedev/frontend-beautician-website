@@ -1,6 +1,12 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 <head>
+  <style type="text/css">
+    .js #fouc { display: none; }
+  </style>
+  <script>
+    document.documentElement.className = 'js';
+  </script>
   <meta charset="utf-8">
   <title>Diana Garcia Estetica</title>
   <base href="/">
@@ -10,9 +16,12 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <app-root id="fouc"></app-root>
 <script
 type="text/javascript"
 src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script type="text/javascript">
+  document.getElementById('fouc').style.display='block';
+</script>
 </body>
 </html>
