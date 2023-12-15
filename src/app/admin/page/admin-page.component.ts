@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { TableComponent } from '../table/table.component';
+import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { TableComponent } from '../components/table/table.component';
 
 @Component({
   selector: 'app-admin-page',

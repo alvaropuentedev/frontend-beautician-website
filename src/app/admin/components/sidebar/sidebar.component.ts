@@ -1,10 +1,10 @@
 import { Component, OnInit, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../service/auth.service';
-import { AdminService } from '../../service/admin.service';
+import { AuthService } from '../../../service/auth.service';
+import { AdminService } from '../../../service/admin.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Modal, Ripple, initTE, Sidenav, Datetimepicker, Input } from 'tw-elements';
-import { MessageService } from '../../service/message.service';
+import { MessageService } from '../../../service/message.service';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,9 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminService } from '../../service/admin.service';
-import { Client } from '../interfaces/client.interface';
+import { AdminService } from '../../../service/admin.service';
+import { Client } from '../../interfaces/client.interface';
 import { Subscription } from 'rxjs';
-import { MessageService } from '../../service/message.service';
+import { MessageService } from '../../../service/message.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 interface Column {
   field: string;
@@ -13,22 +14,29 @@ interface Column {
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
   private readonly adminService = inject(AdminService);
   private readonly messageService = inject(MessageService);
+  private readonly fb = inject(FormBuilder);
+  private clickEvent: Subscription;
 
   public clients: Client[] = [];
   public loading = true;
 
   public cols: Column[] = [];
-  private clickEvent: Subscription;
   public deleteAlertSucces = this.messageService.deleteAlertSucces;
   public deleteAlertError = this.messageService.deleteAlertError;
   public totalAppointmentDates = 0;
+  /**
+   * ? Search Form
+   */
+  public searchForm: FormGroup = this.fb.group({
+    searchQuery: [''],
+  });
 
   constructor() {
     this.clickEvent = this.adminService.getNewClientEvent().subscribe({
@@ -36,6 +44,12 @@ export class TableComponent implements OnInit {
         this.getListClients();
       },
     });
+    const searchQueryControl = this.searchForm.get('searchQuery');
+    if (searchQueryControl) {
+      searchQueryControl.valueChanges.subscribe(() => {
+        this.getListClients();
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -49,7 +63,23 @@ export class TableComponent implements OnInit {
     ];
     this.getListClients();
   }
+/**
+ * * Filter of clients
+ *
+ */
+  get filteredClients(): Client[] {
+    const query = this.searchForm.get('searchQuery');
+    if (query) {
+      query.value.toLowerCase();
+      return this.clients.filter(client => client.name.toLowerCase().includes(query.value));
+    } else {
+      return this.clients;
+    }
+  }
 
+  /**
+   * * Get all clients
+   */
   getListClients() {
     this.adminService.listClient().subscribe({
       next: (data: Client[]) => {
@@ -69,7 +99,7 @@ export class TableComponent implements OnInit {
 
       if (dateTimeArray.length === 2) {
         // eslint-disable-next-line prefer-const
-        let [ date, time ] = dateTimeArray;
+        let [date, time] = dateTimeArray;
         date = this.reverseDateFormat(date);
         return {
           ...elem,
@@ -87,7 +117,6 @@ export class TableComponent implements OnInit {
     const [year, month, day] = date.split('-');
     return `${day}-${month}-${year}`;
   }
-
 
   deleteClient(id_client: number) {
     this.loading = true;
