@@ -22,13 +22,14 @@ export class SidebarComponent implements OnInit {
   public user = computed(() => this.authService.currentUser());
   public showAlertSucces = this.messageService.showAlertSucces;
   public showAlertError = this.messageService.showAlertError;
+  public visibilitySidebar:boolean = true;
 
   public createClientForm: FormGroup = this.fb.group({
     name: [' ', Validators.required],
-    phone: [' ', Validators.required],
+    phone: [' ',[Validators.required, Validators.pattern(/^[0-9]+$/)]],
     appointment_date: [' ', Validators.required],
   });
-
+  public  phoneControl? = this.createClientForm.get('phone');
   ngOnInit(): void {
     // components tw-elements
     initTE({ Modal, Ripple, Sidenav, Datetimepicker, Input });
@@ -54,4 +55,9 @@ export class SidebarComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  modalClose() {
+    this.visibilitySidebar = false
+  }
+
 }

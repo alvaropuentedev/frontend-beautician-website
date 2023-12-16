@@ -70,8 +70,8 @@ export class TableComponent implements OnInit {
   get filteredClients(): Client[] {
     const query = this.searchForm.get('searchQuery');
     if (query) {
-      query.value.toLowerCase();
-      return this.clients.filter(client => client.name.toLowerCase().includes(query.value));
+      const queryToLower = query.value.toLowerCase();
+      return this.clients.filter(client => client.name.toLowerCase().includes(queryToLower));
     } else {
       return this.clients;
     }
