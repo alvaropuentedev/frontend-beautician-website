@@ -1,4 +1,4 @@
-<div class="flex justify-center translate-y-[-4rem] sm:translate-y-0">
+<div class="flex justify-center translate-y-[-4rem] sm:translate-y-[-2rem]">
   <div class="stats shadow">
     <div class="stat">
       <div class="stat-title text-center">Total citas</div>
@@ -7,23 +7,29 @@
     </div>
   </div>
 </div>
-<!--Search Box-->
+<!--search bar -->
 <form [formGroup]="searchForm">
-  <div class="relative mb-6 mt-6" data-te-input-wrapper-init>
-    <input
-      type="text"
-      formControlName="searchQuery"
-      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-      id="searchClientForName"
-      aria-describedby="search"
-      placeholder="" />
-    <label
-      for="searchClientForName"
-      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-      >Buscar Cliente</label
-    >
+  <div class="md:block w-[87%] sm:w-96 mx-6 sm:translate-x-[6rem] lg:translate-y-0">
+    <div class="relative flex items-center text-gray-400 focus-within:text-cyan-400">
+      <span class="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
+        <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 fill-current" viewBox="0 0 35.997 36.004">
+          <path
+            id="Icon_awesome-search"
+            data-name="search"
+            d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z"></path>
+        </svg>
+      </span>
+      <input
+        formControlName="searchQuery"
+        type="search"
+        name="leadingIcon"
+        id="leadingIcon"
+        placeholder="Buscar..."
+        class="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition" />
+    </div>
   </div>
 </form>
+  <!--/search bar -->
 @if (loading) {
 <div class="flex justify-center">
   <div
@@ -36,41 +42,49 @@
   </div>
 </div>
 } @else {
-<div class="roboto shadow-xl flex flex-col overflow-x-auto sm:overflow-y-scroll sm:overflow-hidden h-[20rem]">
-  <div class="sm:-mx-6 lg:-mx-8">
-    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-left text-sm font-light">
-          <thead
-            class="border-b font-medium border-info-200 bg-custom-pastel-pink text-neutral-800 dark:border-neutral-500">
-            <tr class="border-b border-info-200 bg-info-100 text-neutral-800">
-              @for (cols of cols; track $index) {
-              <th scope="col" class="roboto px-6 py-4">
-                {{ cols.header }}
-              </th>
-              }
-            </tr>
-          </thead>
-          <tbody class="bg-white">
-            @for (client of filteredClients; track $index) {
-            <tr
-              class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-              <td class="whitespace-nowrap px-6 py-4 font-medium">
+<!-- component -->
+<section class="container mx-auto p-6 roboto w-screen">
+  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+    <div class="w-full overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr
+            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+            @for (col of cols; track $index) {
+            <th class="px-4 py-3">{{ col.header }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          @for (client of filteredClients; track client.id_client) {
+          <tr class="text-gray-700">
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 {{ client.id_client }}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              </div>
+            </td>
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 {{ client.name }}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              </div>
+            </td>
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 {{ client.phone }}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              </div>
+            </td>
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 {{ client.date }}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              </div>
+            </td>
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 {{ client.time }}
-              </td>
-              <td class="whitespace-nowrap px-6 py-4">
+              </div>
+            </td>
+            <td class="px-4 py-3 border">
+              <div class="flex items-center text-sm">
                 <button (click)="deleteClient(client.id_client)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -85,15 +99,15 @@
                       d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                   </svg>
                 </button>
-              </td>
-            </tr>
-            }
-          </tbody>
-        </table>
-      </div>
+              </div>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+</section>
 <!-- ALERT Succes -->
 @if (deleteAlertSucces()) {
 <div class="absolute top-0 right-0 mt-4 mr-4">
@@ -133,3 +147,41 @@
 }
 <!-- ALERT Error-->
 }
+<!-- <tbody class="bg-white">
+  @for (client of filteredClients; track $index) {
+  <tr
+    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+    <td class="whitespace-nowrap px-6 py-4 font-medium">
+      {{ client.id_client }}
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
+      {{ client.name }}
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
+      {{ client.phone }}
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
+      {{ client.date }}
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
+      {{ client.time }}
+    </td>
+    <td class="whitespace-nowrap px-6 py-4">
+      <button (click)="deleteClient(client.id_client)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+        </svg>
+      </button>
+    </td>
+  </tr>
+  }
+</tbody> -->

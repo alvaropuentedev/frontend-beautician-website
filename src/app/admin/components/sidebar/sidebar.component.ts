@@ -23,6 +23,7 @@ export class SidebarComponent implements OnInit {
   public showAlertSucces = this.messageService.showAlertSucces;
   public showAlertError = this.messageService.showAlertError;
   public visibilitySidebar:boolean = true;
+  ngClass: string = '';
 
   public createClientForm: FormGroup = this.fb.group({
     name: [' ', Validators.required],
