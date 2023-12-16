@@ -22,8 +22,8 @@ export class SidebarComponent implements OnInit {
   public user = computed(() => this.authService.currentUser());
   public showAlertSucces = this.messageService.showAlertSucces;
   public showAlertError = this.messageService.showAlertError;
-  public visibilitySidebar:boolean = true;
-  ngClass: string = '';
+  public showModal:boolean = false;
+  public isSidebarVisible = this.adminService.isSidebarVisible;
 
   public createClientForm: FormGroup = this.fb.group({
     name: [' ', Validators.required],
@@ -42,6 +42,8 @@ export class SidebarComponent implements OnInit {
       next: () => {
         this.messageService.handleAlertSuccesMsg();
         this.sharedLoad();
+        this.isSidebarVisible.set(false);
+        this.createClientForm.reset();
       },
       error: () => {
         this.messageService.handleAlertErrorMsg();
@@ -55,10 +57,6 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-  }
-
-  modalClose() {
-    this.visibilitySidebar = false
   }
 
 }

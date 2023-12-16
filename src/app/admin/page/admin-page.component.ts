@@ -1,8 +1,10 @@
-import { Component, ElementRef, computed, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { TableComponent } from '../components/table/table.component';
+import { MessageService } from '../../service/message.service';
+import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,14 +16,17 @@ import { TableComponent } from '../components/table/table.component';
 })
 export class AdminPageComponent {
   private readonly authService = inject( AuthService );
-  private readonly el = inject(ElementRef);
+  private readonly adminService = inject(AdminService);
+  private readonly  messageService = inject(MessageService);
 
   public user = computed( () => this.authService.currentUser() );
-  public isSidebarVisible = false;
+  public isSidebarVisible = this.adminService.isSidebarVisible;
+  public showAlertSucces = this.messageService.showAlertSucces;
+  public showAlertError = this.messageService.showAlertError;
 
   constructor() { }
 
   toggleSidebar() {
-    this.isSidebarVisible = !this.isSidebarVisible;
+    this.adminService.toggleSidebar();
   }
 }

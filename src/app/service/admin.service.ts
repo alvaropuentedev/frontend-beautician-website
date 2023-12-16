@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Client } from '../admin/interfaces/client.interface';
@@ -9,6 +9,8 @@ export class AdminService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl: string = enviroment.base_url;
   private listClientSubject = new Subject<unknown>();
+
+  public isSidebarVisible = signal(false);
 
   // private baseUrl = 'http://localhost:8080'
 
@@ -33,5 +35,9 @@ export class AdminService {
 
   sendNewClientEvent() {
     return this.listClientSubject.next(null);
+  }
+
+  toggleSidebar() {
+    this.isSidebarVisible.set(!this.isSidebarVisible());
   }
 }

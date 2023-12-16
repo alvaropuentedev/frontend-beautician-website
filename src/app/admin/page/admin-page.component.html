@@ -9,7 +9,7 @@
   <app-table class="lg:w-full h-auto col-span-12 lg:col-start-4 lg:col-end-10 row-start-2 lg:row-end-3" />
 </div> -->
 <!-- component -->
-@if (isSidebarVisible) {
+@if (isSidebarVisible()) {
 <app-sidebar
   class="roboto ml-0 w-6/12 fixed top-0 pb-3 px-6 flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]"></app-sidebar>
 }
@@ -31,7 +31,7 @@
       </button>
       <div class="flex space-x-4">
         <!--search bar -->
-        <div hidden class="md:block">
+        <div hidden class="">
           <div class="relative flex items-center text-gray-400 focus-within:text-cyan-400">
             <span class="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
               <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 fill-current" viewBox="0 0 35.997 36.004">
@@ -57,3 +57,41 @@
     <app-table />
   </div>
 </div>
+<!-- ALERT Succes -->
+@if (showAlertSucces()) {
+  <div class="msg absolute top-0 right-0 mt-4 mr-4">
+    <div
+      class="mb-3 inline-flex w-full items-center rounded-lg bg-green-200 px-6 py-5 text-base text-success-700"
+      role="alert">
+      <span class="mr-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd" />
+        </svg>
+      </span>
+      Cita Creada
+    </div>
+  </div>
+  }
+  <!-- ALERT Succes-->
+  <!-- ALERT Error -->
+  @if (showAlertError()) {
+  <div class="msg absolute top-0 right-0 mt-4 mr-4">
+    <div
+      class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
+      role="alert">
+      <span class="mr-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+          <path
+            fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+            clip-rule="evenodd" />
+        </svg>
+      </span>
+      No se ha podido crear la cita
+    </div>
+  </div>
+  }
+  <!-- ALERT -->
