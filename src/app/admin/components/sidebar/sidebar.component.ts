@@ -57,6 +57,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
+    this.isSidebarVisible.set(false);
     this.authService.logout();
   }
 
