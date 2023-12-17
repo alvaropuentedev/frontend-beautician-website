@@ -1,18 +1,11 @@
-<!-- <aside [ngClass]="ngClass" class="roboto ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]"> -->
 <div>
-  <div class="-mx-6 px-6 py-4">
-    <a href="#" title="home">
-      <p class="KaushanScript text-[29px] text-center" alt="...">Diana Garcia Estética</p>
-    </a>
-  </div>
-
   <div class="mt-8 text-center">
     <img
       src="../../../../assets/img/mainLogo.png"
       alt=""
       class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-    <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">{{ user() }}</h5>
-    <span class="hidden text-gray-400 lg:block">Admin</span>
+    <h5 class="mt-4 text-xl font-semibold text-gray-600 lg:block">{{ user() }}</h5>
+    <span class="text-gray-400 lg:block">Admin</span>
   </div>
 
   <ul class="space-y-2 tracking-wide mt-8">
@@ -20,17 +13,17 @@
       <button
         onclick="my_modal_1.showModal()"
         aria-label="crear nueva cita"
-        class="btn relative px-4 py-3 flex items-center space-x-4 rounded-xl text-black bg-gradient-to-r from-custom-pastel-pink to-cyan-400">
+        class="btn relative px-4 py-3 flex items-center space-x-4 rounded-xl text-black bg-gradient-to-r from-custom-pastel-pink to-white-400">
         <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
           <path
             d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
-            class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+            class="fill-current text-pink-400 dark:fill-slate-600"></path>
           <path
             d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
-            class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+            class="fill-current text-pink-200 group-hover:text-pink-300"></path>
           <path
             d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
-            class="fill-current group-hover:text-sky-300"></path>
+            class="fill-current group-hover:text-pink-300"></path>
         </svg>
         <span class="-mr-1 font-medium">Crear nueva cita</span>
       </button>
@@ -62,32 +55,35 @@
       <form [formGroup]="createClientForm" method="dialog" class="w-full">
         <!-- component -->
         <div class="px-8 py-6">
-          <label for="" class="block font-semibold"> Nombre </label>
+          <label for="" class="block font-semibold"> Nombre *</label>
           <input
+            required
             formControlName="name"
             type="text"
-            placeholder="Email"
+            placeholder="Nombre"
             class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
-          <label for="" class="block mt-3 font-semibold"> Teléfono </label>
+          <label for="" class="block mt-3 font-semibold"> Teléfono *</label>
           <input
             formControlName="phone"
             type="tel"
             placeholder="Teléfono"
             class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
-          <label for="" class="block mt-3 font-semibold"> Fecha de la cita </label>
+          <label for="" class="block mt-3 font-semibold"> Fecha * </label>
           <input
+            required
             formControlName="appointment_date"
             type="datetime-local"
             placeholder="Fecha"
             class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
           <div class="flex justify-end gap-2 items-baseline">
-            <button class="mt-4 bg-custom-pastel-pink text-black py-2 px-6 rounded-md hover:bg-pink-600">
+            <button (click)="isSidebarVisible.set(false)" class="btn mt-4 text-black py-2 px-6 rounded-md">
               Cancelar
             </button>
             <button
               (click)="submitClientForm()"
+              [disabled]="createClientForm.invalid"
               type="submit"
-              class="mt-4 bg-custom-pastel-pink text-black py-2 px-6 rounded-md hover:bg-pink-600">
+              class="btn cursor-pointer mt-4 bg-custom-pastel-pink text-black py-2 px-6 rounded-md">
               Crear Cita
             </button>
           </div>

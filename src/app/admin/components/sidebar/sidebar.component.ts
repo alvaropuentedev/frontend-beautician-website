@@ -26,23 +26,24 @@ export class SidebarComponent implements OnInit {
   public isSidebarVisible = this.adminService.isSidebarVisible;
 
   public createClientForm: FormGroup = this.fb.group({
-    name: [' ', Validators.required],
-    phone: [' ',[Validators.required, Validators.pattern(/^[0-9]+$/)]],
-    appointment_date: [' ', Validators.required],
+    name: ['', Validators.required],
+    phone: ['',[Validators.required, Validators.pattern(/^[0-9]+$/)]],
+    appointment_date: ['', Validators.required],
   });
   public  phoneControl? = this.createClientForm.get('phone');
+  public  nameControl? = this.createClientForm.get('name');
   ngOnInit(): void {
     // components tw-elements
     initTE({ Modal, Ripple, Sidenav, Datetimepicker, Input });
   }
 
   submitClientForm() {
+    this.isSidebarVisible.set(false);
     const { name, phone, appointment_date } = this.createClientForm.value;
     this.adminService.createClient(name, phone, appointment_date).subscribe({
       next: () => {
         this.messageService.handleAlertSuccesMsg();
         this.sharedLoad();
-        this.isSidebarVisible.set(false);
         this.createClientForm.reset();
       },
       error: () => {

@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { TableComponent } from '../components/table/table.component';
@@ -18,15 +18,22 @@ export class AdminPageComponent {
   private readonly authService = inject( AuthService );
   private readonly adminService = inject(AdminService);
   private readonly  messageService = inject(MessageService);
+  private readonly viewportScroller = inject(ViewportScroller);
 
   public user = computed( () => this.authService.currentUser() );
   public isSidebarVisible = this.adminService.isSidebarVisible;
   public showAlertSucces = this.messageService.showAlertSucces;
   public showAlertError = this.messageService.showAlertError;
+  public deleteAlertSucces = this.messageService.deleteAlertSucces;
+  public deleteAlertError = this.messageService.deleteAlertError;
 
-  constructor() { }
+  constructor() {this.scrollToTop() }
 
   toggleSidebar() {
     this.adminService.toggleSidebar();
+  }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

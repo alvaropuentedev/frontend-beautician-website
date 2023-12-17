@@ -1,25 +1,17 @@
-<!-- <div class="grid grid-cols-12 grid-rows-6 h-screen overflow-hidden">
-  <app-sidebar />
-  <h1
-    id="title"
-    style="width: max-content"
-    class="text-[28px] p-5 font-bold w-[210px] lg:w-full lg:text-center col-start-5 translate-y-5 lg:translate-y-0 lg:col-start-6 lg:col-end-8 lg:row-start-1 lg:row-end-2">
-    Diana Garcia
-  </h1>
-  <app-table class="lg:w-full h-auto col-span-12 lg:col-start-4 lg:col-end-10 row-start-2 lg:row-end-3" />
-</div> -->
 <!-- component -->
 @if (isSidebarVisible()) {
 <app-sidebar
-  class="roboto ml-0 w-6/12 fixed top-0 pb-3 px-6 flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]"></app-sidebar>
+  class="roboto ml-0 w-7/12 fixed top-0 pb-3 px-6 flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-3/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]"></app-sidebar>
 }
 <div class="roboto ml-auto mb-6 lg:w-[100%] xl:w-[100%] 2xl:w-[100%]">
   <div class="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
-    <div class="px-6 flex items-center justify-between space-x-4 2xl:container">
-      <h5 class="text-2xl text-gray-600 font-bold lg:block">Dashboard</h5>
+    <div class="flex justify-between"></div>
+    <div class="px-6 flex items-center justify-between space-x-4 2xl:container translate-y-[12px] lg:translate-y-0">
+      <h5 class="KaushanScript text-[29px] text-center" alt="...">Diana Garcia</h5>
+      <!-- burguer button -->
       <button
         (click)="toggleSidebar()"
-        class="w-14 h-11 translate-x-[6rem] xs:translate-x-[9rem] -mr-2 md:border-r md:translate-x-[-10rem]">
+        class="w-14 h-11 translate-x-[5rem] xs:translate-x-[5rem] -mr-2 md:border-r md:translate-x-[-16rem] lg:translate-x-[-20rem]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6 my-auto"
@@ -59,39 +51,77 @@
 </div>
 <!-- ALERT Succes -->
 @if (showAlertSucces()) {
-  <div class="msg absolute top-0 right-0 mt-4 mr-4">
-    <div
-      class="mb-3 inline-flex w-full items-center rounded-lg bg-green-200 px-6 py-5 text-base text-success-700"
-      role="alert">
-      <span class="mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-          <path
-            fill-rule="evenodd"
-            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-            clip-rule="evenodd" />
-        </svg>
-      </span>
-      Cita Creada
-    </div>
+<div class="msg absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-green-200 px-6 py-5 text-base text-success-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    Cita Creada
   </div>
-  }
-  <!-- ALERT Succes-->
-  <!-- ALERT Error -->
-  @if (showAlertError()) {
-  <div class="msg absolute top-0 right-0 mt-4 mr-4">
-    <div
-      class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
-      role="alert">
-      <span class="mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-          <path
-            fill-rule="evenodd"
-            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-            clip-rule="evenodd" />
-        </svg>
-      </span>
-      No se ha podido crear la cita
-    </div>
+</div>
+}
+<!-- ALERT Succes-->
+<!-- ALERT Error -->
+@if (showAlertError()) {
+<div class="msg absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    No se ha podido crear la cita
   </div>
-  }
-  <!-- ALERT -->
+</div>
+}
+<!-- ALERT ERROR Create-->
+<!-- ALERT Succes -->
+@if (deleteAlertSucces()) {
+<div class="msg absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-warning px-6 py-5 text-base text-success-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    Cita eliminada
+  </div>
+</div>
+}
+<!-- ALERT Succes-->
+<!-- ALERT Error -->
+@if (deleteAlertError()) {
+<div class="msg absolute top-0 right-0 mt-4 mr-4">
+  <div
+    class="mb-3 inline-flex w-full items-center rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-700"
+    role="alert">
+    <span class="mr-2">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+        <path
+          fill-rule="evenodd"
+          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    No se ha podido eliminar la cita
+  </div>
+</div>
+}
+<!-- ALERT Error-->

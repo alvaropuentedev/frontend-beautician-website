@@ -26,11 +26,11 @@ export class TableComponent implements OnInit {
 
   public clients: Client[] = [];
   public loading = true;
+  public modalConfirmDelete = false;
 
   public cols: Column[] = [];
-  public deleteAlertSucces = this.messageService.deleteAlertSucces;
-  public deleteAlertError = this.messageService.deleteAlertError;
   public totalAppointmentDates = 0;
+  public idDeleteClient = 0;
   /**
    * ? Search Form
    */
@@ -63,10 +63,10 @@ export class TableComponent implements OnInit {
     ];
     this.getListClients();
   }
-/**
- * * Filter of clients
- *
- */
+  /**
+   * * Filter of clients
+   *
+   */
   get filteredClients(): Client[] {
     const query = this.searchForm.get('searchQuery');
     if (query) {
@@ -117,20 +117,24 @@ export class TableComponent implements OnInit {
     const [year, month, day] = date.split('-');
     return `${day}-${month}-${year}`;
   }
-
+  confirmDelete(id: number) {
+    this.idDeleteClient = id;
+  }
   deleteClient(id_client: number) {
-    this.loading = true;
-    this.adminService.deleteClient(id_client).subscribe({
-      next: () => {
-        this.messageService.handleDeleteAlertSuccesMsg();
-        this.getListClients();
-        this.loading = false;
-        console.log('CLIENTE ELIMINADO!');
-      },
-      error: () => {
-        this.messageService.handleDeleteAlertErrorMsg();
-      },
-    });
+      this.loading = true;
+      this.adminService.deleteClient(id_client).subscribe({
+        next: () => {
+          this.messageService.handleDeleteAlertSuccesMsg();
+          this.loading = false;
+          this.getListClients();
+          this.searchForm = this.fb.group({
+            searchQuery: [''],
+          })
+        },
+        error: () => {
+          this.messageService.handleDeleteAlertErrorMsg();
+        },
+      });
   }
 
   countTotalClients(clients: Client[]) {
