@@ -11,6 +11,7 @@ export class AdminService {
   private listClientSubject = new Subject<unknown>();
 
   public isSidebarVisible = signal(false);
+  public clientList$ = signal<Client[] | null >(null);
 
   // private baseUrl = 'http://localhost:8080'
 

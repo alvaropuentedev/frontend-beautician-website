@@ -57,15 +57,24 @@
         <div class="px-8 py-6">
           <label for="" class="block font-semibold"> Nombre *</label>
           <input
-            required
+            id="name"
             formControlName="name"
             type="text"
             placeholder="Nombre"
-            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+            required />
+          <!-- @if ( name?.invalid && (name?.dirty || name?.touched)) {}
+            <div>
+              @if (name?.errors?.['required']) {
+                <div class="text-red-500">
+                  Name is required.
+                </div>
+              }
+            </div> -->
           <label for="" class="block mt-3 font-semibold"> Teléfono *</label>
           <input
             formControlName="phone"
-            type="tel"
+            type="number"
             placeholder="Teléfono"
             class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
           <label for="" class="block mt-3 font-semibold"> Fecha * </label>

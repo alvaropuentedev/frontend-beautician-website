@@ -38,12 +38,15 @@ export class TableComponent implements OnInit {
     searchQuery: [''],
   });
 
+  public clientList$ = this.adminService.clientList$;
+
   constructor() {
     this.clickEvent = this.adminService.getNewClientEvent().subscribe({
       next: () => {
         this.getListClients();
       },
     });
+
     const searchQueryControl = this.searchForm.get('searchQuery');
     if (searchQueryControl) {
       searchQueryControl.valueChanges.subscribe(() => {
@@ -83,6 +86,7 @@ export class TableComponent implements OnInit {
   getListClients() {
     this.adminService.listClient().subscribe({
       next: (data: Client[]) => {
+        this.clientList$.set(data);
         this.clients = this.splitDateTime(data);
         this.totalAppointmentDates = this.countTotalClients(this.clients);
         this.loading = false;

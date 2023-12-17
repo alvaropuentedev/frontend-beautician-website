@@ -22,36 +22,57 @@ export class SidebarComponent implements OnInit {
   public user = computed(() => this.authService.currentUser());
   public showAlertSucces = this.messageService.showAlertSucces;
   public showAlertError = this.messageService.showAlertError;
-  public showModal:boolean = false;
+  public showModal: boolean = false;
   public isSidebarVisible = this.adminService.isSidebarVisible;
+
+  public clientList$ = this.adminService.clientList$();
 
   public createClientForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    phone: ['',[Validators.required, Validators.pattern(/^[0-9]+$/)]],
+    phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
     appointment_date: ['', Validators.required],
   });
-  public  phoneControl? = this.createClientForm.get('phone');
-  public  nameControl? = this.createClientForm.get('name');
+
+  constructor() { }
+
   ngOnInit(): void {
     // components tw-elements
     initTE({ Modal, Ripple, Sidenav, Datetimepicker, Input });
+    this.sharedLoad();
+  }
+  get name() {
+    return this.createClientForm.get('name');
   }
 
   submitClientForm() {
-    this.isSidebarVisible.set(false);
-    const { name, phone, appointment_date } = this.createClientForm.value;
-    this.adminService.createClient(name, phone, appointment_date).subscribe({
-      next: () => {
-        this.messageService.handleAlertSuccesMsg();
-        this.sharedLoad();
-        this.createClientForm.reset();
-      },
-      error: () => {
-        this.messageService.handleAlertErrorMsg();
-      },
-    });
+    if (this.checkAppointmentExist()) {
+      this.isSidebarVisible.set(false);
+      this.messageService.handleAlertErrorMsg();
+    } else {
+      this.isSidebarVisible.set(false);
+      const { name, phone, appointment_date } = this.createClientForm.value;
+      this.adminService.createClient(name, phone, appointment_date).subscribe({
+        next: () => {
+          this.messageService.handleAlertSuccesMsg();
+          this.sharedLoad();
+          this.createClientForm.reset();
+        },
+        error: () => {
+          this.messageService.handleAlertErrorMsg();
+        },
+      });
+    }
   }
 
+  checkAppointmentExist() {
+    const appointmentDateControl = this.createClientForm.get('appointment_date');
+    const checkAppointmentExist = this.clientList$?.some(
+      client => client.appointment_date === appointmentDateControl?.value
+    );
+    return checkAppointmentExist;
+  }
+
+  // Func for call getListClients
   sharedLoad() {
     this.adminService.sendNewClientEvent();
   }
@@ -60,5 +81,4 @@ export class SidebarComponent implements OnInit {
     this.isSidebarVisible.set(false);
     this.authService.logout();
   }
-
 }
