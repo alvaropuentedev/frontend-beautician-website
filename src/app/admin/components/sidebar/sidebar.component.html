@@ -63,27 +63,49 @@
             placeholder="Nombre"
             class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
             required />
-          <!-- @if ( name?.invalid && (name?.dirty || name?.touched)) {}
+          @if ( name?.invalid && (name?.dirty || name?.touched)) {
             <div>
-              @if (name?.errors?.['required']) {
+              @if (name?.hasError('required')) {
                 <div class="text-red-500">
-                  Name is required.
+                  Introduce un nombre válido
                 </div>
               }
-            </div> -->
+            </div>
+          }
           <label for="" class="block mt-3 font-semibold"> Teléfono *</label>
           <input
             formControlName="phone"
             type="number"
             placeholder="Teléfono"
-            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
-          <label for="" class="block mt-3 font-semibold"> Fecha * </label>
-          <input
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
             required
+            />
+            @if ( phone?.invalid && (phone?.dirty || phone?.touched)) {
+              <div>
+                @if (phone?.hasError('required')) {
+                  <div class="text-red-500">
+                    Introduce un teléfono válido
+                  </div>
+                }
+              </div>
+            }
+            <label for="" class="block mt-3 font-semibold"> Fecha * </label>
+          <input
             formControlName="appointment_date"
             type="datetime-local"
             placeholder="Fecha"
-            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+            required
+            />
+            @if ( appointment_date?.invalid && (appointment_date?.dirty || appointment_date?.touched)) {
+              <div>
+                @if (appointment_date?.hasError('required')) {
+                  <div class="text-red-500">
+                    Introduce una fecha válida
+                  </div>
+                }
+              </div>
+            }
           <div class="flex justify-end gap-2 items-baseline">
             <button (click)="isSidebarVisible.set(false)" class="btn mt-4 text-black py-2 px-6 rounded-md">
               Cancelar

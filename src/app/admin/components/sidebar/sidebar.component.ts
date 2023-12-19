@@ -25,8 +25,11 @@ export class SidebarComponent implements OnInit {
   public showModal: boolean = false;
   public isSidebarVisible = this.adminService.isSidebarVisible;
 
+  // signal with all clients list
   public clientList$ = this.adminService.clientList$();
 
+
+  // ? FORM
   public createClientForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
     phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
@@ -42,6 +45,12 @@ export class SidebarComponent implements OnInit {
   }
   get name() {
     return this.createClientForm.get('name');
+  }
+  get phone() {
+    return this.createClientForm.get('phone');
+  }
+  get appointment_date() {
+    return this.createClientForm.get('appointment_date');
   }
 
   submitClientForm() {
