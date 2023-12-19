@@ -5,11 +5,12 @@ import { AdminService } from '../../../service/admin.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Modal, Ripple, initTE, Sidenav, Datetimepicker, Input } from 'tw-elements';
 import { MessageService } from '../../../service/message.service';
+import { ErrorFieldComponent } from '../../../shared/error-field/error-field.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ErrorFieldComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
@@ -31,10 +32,27 @@ export class SidebarComponent implements OnInit {
 
   // ? FORM
   public createClientForm: FormGroup = this.fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+$')]],
     phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
     appointment_date: ['', Validators.required],
   });
+  // ? VALIDATORS MESSAGES
+  public validationMessages = {
+    name: {
+      required: 'Introduce un nombre válido',
+      name: 'Introduce un nombre válido',
+      pattern: 'El nombre solo puede contener letras'
+    },
+    phone: {
+      required: 'Introduce un teléfono válido',
+      phone: 'Introduce un teléfono válido',
+    },
+    appointment_date: {
+      required: 'Introduce una fecha válida',
+      appointment_date: 'Introduce una fecha válida',
+    },
+
+  };
 
   constructor() { }
 
