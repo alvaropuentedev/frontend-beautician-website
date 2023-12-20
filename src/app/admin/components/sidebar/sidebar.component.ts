@@ -15,10 +15,10 @@ import { ErrorFieldComponent } from '../../../shared/error-field/error-field.com
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent implements OnInit {
-  private readonly authService = inject(AuthService);
-  private readonly adminService = inject(AdminService);
+  private readonly authService    = inject(AuthService);
+  private readonly adminService   = inject(AdminService);
   private readonly messageService = inject(MessageService);
-  private readonly fb = inject(FormBuilder);
+  private readonly fb             = inject(FormBuilder);
 
   public user = computed(() => this.authService.currentUser());
   public showAlertSucces = this.messageService.showAlertSucces;
@@ -46,6 +46,7 @@ export class SidebarComponent implements OnInit {
     phone: {
       required: 'Introduce un teléfono válido',
       phone: 'Introduce un teléfono válido',
+      pattern: 'El teléfono solo puede contener números'
     },
     appointment_date: {
       required: 'Introduce una fecha válida',
