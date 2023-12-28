@@ -1,16 +1,16 @@
-@defer (on viewport) {
-<div class="card flex top justify-content-center">
+<div class="card flex justify-content-center">
   <p-dialog
     [(visible)]="visible"
     [modal]="true"
     [baseZIndex]="99999999"
     [breakpoints]="{ '960px': '95vw' }"
-    [style]="{ width: '50vw' }"
+    [style]="{ width: '40vw' }"
     [draggable]="false"
     [resizable]="false">
     <img src="../../../assets/img/promo/22enero_back.png" alt=".." />
   </p-dialog>
 </div>
+@defer (on viewport) {
 <app-home />
 } @placeholder (minimum 2000ms) {
 <body class="h-screen flex items-center justify-center bg-white">
